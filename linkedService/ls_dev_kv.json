@@ -1,0 +1,11 @@
+{
+	"name": "ls_dev_kv",
+	"properties": {
+		"description": "this ls connects to key vault to pull passwords",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kvdevpostgress.vault.azure.net/"
+		}
+	}
+}
