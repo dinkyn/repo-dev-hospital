@@ -1,0 +1,11 @@
+{
+	"name": "ls_dev_container",
+	"properties": {
+		"description": "connect to dev container",
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://sadevhospital.dfs.core.windows.net/"
+		}
+	}
+}
