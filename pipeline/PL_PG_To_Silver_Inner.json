@@ -41,7 +41,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "utc_time_now",
+					"variableName": "start",
 					"value": {
 						"value": "@formatDateTime(utcNow(),'yyyy-MM-dd_hh:mm:ss')",
 						"type": "Expression"
@@ -115,7 +115,7 @@
 						"parameters": {
 							"container": "landing",
 							"folder": {
-								"value": "@concat(\nactivity('Read Table Details').output.firstRow.source_system,\n'/',\nactivity('Read Table Details').output.firstRow.sorce_table_name,\n'/',\nvariables('utc_time_now')\n\n)",
+								"value": "@concat(\nactivity('Read Table Details').output.firstRow.source_system,\n'/',\nactivity('Read Table Details').output.firstRow.sorce_table_name,\n'/',\nvariables('start')\n\n)",
 								"type": "Expression"
 							}
 						}
@@ -131,6 +131,9 @@
 		},
 		"variables": {
 			"utc_time_now": {
+				"type": "String"
+			},
+			"start": {
 				"type": "String"
 			}
 		},
