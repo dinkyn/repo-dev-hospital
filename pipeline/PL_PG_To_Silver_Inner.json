@@ -28,12 +28,14 @@
 						"referenceName": "PL_PG_TO_SILVER",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			},
 			{
 				"name": "start_time",
 				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
@@ -52,6 +54,8 @@
 				"name": "Posgress_to_data_lake",
 				"description": "This copies all data from neon db to delta lake",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Read Table Details",
