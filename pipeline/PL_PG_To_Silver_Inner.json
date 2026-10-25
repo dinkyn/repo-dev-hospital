@@ -28,7 +28,7 @@
 						"referenceName": "PL_PG_TO_SILVER",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": true
+					"firstRowOnly": false
 				}
 			},
 			{
