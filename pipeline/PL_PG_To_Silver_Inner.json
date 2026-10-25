@@ -28,7 +28,10 @@
 						"referenceName": "PL_PG_TO_SILVER",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"firstRowOnly": {
+						"value": "@pipeline().parameters.table_id",
+						"type": "Expression"
+					}
 				}
 			},
 			{
