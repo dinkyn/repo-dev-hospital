@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT * FROM [ctrl].[table_config]\nwhere source_system='@{pipeline().parameters.source_system}' and is_active=1",
+							"value": "SELECT table_id FROM [ctrl].[table_config]\nwhere source_system='@{pipeline().parameters.source_system}' and is_active=1",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -30,12 +30,55 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Ingest All tables",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Read_Postgres_Table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Read_Postgres_Table').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Get table id",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "table_id",
+								"value": {
+									"value": "@item().table_id",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
 			}
 		],
 		"parameters": {
 			"source_system": {
 				"type": "string",
 				"defaultValue": "neon_postgres"
+			}
+		},
+		"variables": {
+			"table_id": {
+				"type": "String"
 			}
 		},
 		"annotations": []
