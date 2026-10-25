@@ -5,8 +5,6 @@
 			{
 				"name": "Read Table Details",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -23,14 +21,14 @@
 							"value": "SELECT * FROM [ctrl].[table_config]\nwhere table_id=@{pipeline().parameters.table_id}",
 							"type": "Expression"
 						},
-						"queryTimeout": "00:10:00",
+						"queryTimeout": "00:30:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "PL_PG_TO_SILVER",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": true
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -54,8 +52,6 @@
 				"name": "Posgress_to_data_lake",
 				"description": "This copies all data from neon db to delta lake",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Read Table Details",
@@ -119,7 +115,7 @@
 						"parameters": {
 							"container": "landing",
 							"folder": {
-								"value": "@concat(\nactivity('Read Table Details').output.firstRow.source_system,\n'/',\nactivity('Read Table Details').output.firstRow.source_table_name,\n'/',\nvariables('start')\n\n)",
+								"value": "@concat(\nactivity('Read Table Details').output.firstRow.source_system,\n'/',\nactivity('Read Table Details').output.firstRow.source_table_name,\n'/',\nvariables('start')\n)",
 								"type": "Expression"
 							}
 						}
