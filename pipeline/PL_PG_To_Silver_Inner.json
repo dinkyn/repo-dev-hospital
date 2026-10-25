@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "get_table_id",
+				"name": "Read Table Details",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -54,7 +54,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "get_table_id",
+						"activity": "Read Table Details",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -115,7 +115,7 @@
 						"parameters": {
 							"container": "landing",
 							"folder": {
-								"value": "@concat(\nactivity('get_table_id').output.firstRow.source_system,\n'/',\nactivity('get_table_id').output.firstRow.sorce_table_name,\n'/',\nvariables('utc_time_now')\n\n)",
+								"value": "@concat(\nactivity('Read Table Details').output.firstRow.source_system,\n'/',\nactivity('Read Table Details').output.firstRow.sorce_table_name,\n'/',\nvariables('utc_time_now')\n\n)",
 								"type": "Expression"
 							}
 						}
