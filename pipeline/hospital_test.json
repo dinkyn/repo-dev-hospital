@@ -49,7 +49,11 @@
 				"outputs": [
 					{
 						"referenceName": "hospital_raw",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "landing",
+							"folder": "firsttest"
+						}
 					}
 				]
 			}
