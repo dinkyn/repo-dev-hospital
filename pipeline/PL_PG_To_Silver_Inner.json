@@ -115,7 +115,7 @@
 						"parameters": {
 							"container": "landing",
 							"folder": {
-								"value": "@concat(\n       activity('get_table_id').output.firstRow.source_system,\n       '/',\n       activity('get_table_id').output.firstRow.source_table_name,\n       '/',\n       variables('utc_time_now')\n)",
+								"value": "@concat(\nactivity('get_table_id').output.firstRow.source_system,\n'/',\nactivity('get_table_id').output.firstRow.sorce_table_name,\n'/',\nvariables('utc_time_now')\n\n)",
 								"type": "Expression"
 							}
 						}
