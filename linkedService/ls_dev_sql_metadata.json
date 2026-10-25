@@ -1,0 +1,24 @@
+{
+	"name": "ls_dev_sql_metadata",
+	"properties": {
+		"description": "This linked service connects to metadata table inside sql server",
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "hospital-dev-sql.database.windows.net",
+			"database": "sql-db-hospital",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "admin1",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_dev_kv",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sql-metdata-password"
+			}
+		}
+	}
+}
