@@ -1,0 +1,12 @@
+{
+	"name": "PL_PG_TO_SILVER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dev_sql_metadata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
